@@ -1,0 +1,54 @@
+.burger-constructor {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) max-content;
+  max-height: calc(100vh - 268px);
+}
+
+.burger-constructor__list {
+  display: grid;
+  max-height: 100%;
+  grid-template-rows: max-content 1fr max-content;
+}
+
+.burger-constructor__fillings {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+.burger-constructor__fillings::-webkit-scrollbar {
+  width: 8px;
+}
+
+.burger-constructor__fillings::-webkit-scrollbar-thumb {
+  background: #8585ad;
+  border-radius: 6px;
+}
+
+.burger-constructor__fillings::-webkit-scrollbar-track {
+  background: #2f2f37;
+}
+
+.burger-constructor__filling {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.burger-constructor__total {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.burger-constructor__amount-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.burger-constructor__amount-container svg {
+  width: 36px;
+  height: 36px;
+}
