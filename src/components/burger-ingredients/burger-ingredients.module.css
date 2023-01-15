@@ -11,24 +11,19 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
-.burger-ingredients__types-list {
+.burger-ingredients__section-list {
   padding: 0;
   margin: 0;
   list-style: none;
   overflow: auto;
 }
 
-.burger-ingredients__types-list::-webkit-scrollbar {
+.burger-ingredients__section-list::-webkit-scrollbar {
   width: 8px;
-}
-
-.burger-ingredients__types-list::-webkit-scrollbar-thumb {
-  /* Foreground */
-  background: #8585ad;
-  border-radius: 6px;
-}
-
-.burger-ingredients__types-list::-webkit-scrollbar-track {
-  /* Background */
   background: #2f2f37;
+}
+
+.burger-ingredients__section-list::-webkit-scrollbar-thumb {
+  background: #8585ad;
+  border: 3px solid #8585ad;
 }

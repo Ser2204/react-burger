@@ -1,7 +1,7 @@
-import { useContext, useState } from 'react';
+import { useMemo, useContext, useState } from 'react';
 import burgerConstructorStyles from './burger-constructor.module.css';
 import Modal from '../modal/modal';
-import OrderDetails from '../order-details/order-details';
+import OrderDetails from './order-details/order-details';
 import { ConstructorElement, Button, CurrencyIcon, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Context } from '../../context/context';
 import { nanoid } from 'nanoid';
@@ -10,64 +10,53 @@ const ORDER_ID = '034536';
 const BurgerConstructor = () => {
     const ingredients = useContext(Context);
     const [state, setState] = useState({
-        isOrderNeedsBeShown: false,
+        ModalIsVisible: false,
     });
-    
-    const bun = ingredients.find((ingredient) => {
-        return ingredient.type === 'bun';
-    });
-    const totalPrice =
-        bun &&
-        bun.price +
-            ingredients.reduce((price, ingredient) => {
-                if (ingredient.type !== 'bun') {
-                    price += ingredient.price;
-                }
-                return price;
-            }, 0);
+    const bun = ingredients.find((item) => item.type === "bun");
+    const totalPrice = useMemo(() => {
+        return ingredients.reduce((price, item) => price + item.price, 0);
+      }, [ingredients]);
 
     const sendOrderHandler = () => {
-        setState({ ...state, isOrderNeedsBeShown: true });
+        setState({ ...state, ModalIsVisible: true });
     };
     const closeOrderDetails = () => {
-        setState({ ...state, isOrderNeedsBeShown: false });
+        setState({ ...state, ModalIsVisible: false });
     };
 
     return (
         <section className={`${burgerConstructorStyles['burger-constructor']} pt-25 pb-10 pl-10`}>
             <section className={`${burgerConstructorStyles['burger-constructor__list']} pb-10`}>
                 {bun && (
-                    <div>
+                    <div className="ml-8 mb-4">
                         <ConstructorElement
                             text={`${bun.name} (верх)`}
                             isLocked
                             price={bun.price}
                             thumbnail={bun.image}
-                            type="top"
-                            extraClass="ml-8 mb-4"
+                            type="top"                            
                         />
                     </div>
                 )}
-                <ul className={`${burgerConstructorStyles['burger-constructor__fillings']}`}>
+                <ul className={`${burgerConstructorStyles['burger-constructor__elements']}`}>
                     {ingredients
-                        .filter((ingredient) => {
-                            return ingredient.type !== 'bun';
+                        .filter((item) => {
+                            return item.type !== 'bun';
                         })
-                        .map((ingredient, index) => {
+                        .map((item, index) => {
                             return (
                                 <li
-                                    className={`${burgerConstructorStyles['burger-constructor__filling']} ${
+                                    className={`${burgerConstructorStyles['burger-constructor__element']} ${
                                         index === 0 ? '' : 'pt-4'
-                                    } pr-2`}
+                                    } pr-2 ml-2`}
                                     key={nanoid()}
                                 >
                                     <DragIcon />
                                     <ConstructorElement
                                         key={nanoid()}
-                                        text={ingredient.name}
-                                        price={ingredient.price}
-                                        thumbnail={ingredient.image}
-                                        extraClass="ml-2"
+                                        text={item.name}
+                                        price={item.price}
+                                        thumbnail={item.image}
                                     />
                                 </li>
                             );
@@ -75,20 +64,19 @@ const BurgerConstructor = () => {
                 </ul>
 
                 {bun && (
-                    <div>
+                    <div className="ml-8 mt-4" >
                         <ConstructorElement
                             text={`${bun.name} (низ)`}
                             isLocked
                             price={bun.price}
                             thumbnail={bun.image}
                             type="bottom"
-                            extraClass="ml-8 mt-4"
                         />
                     </div>
                 )}
             </section>
             <section className={`${burgerConstructorStyles['burger-constructor__total']} pr-4`}>
-                <div className={`${burgerConstructorStyles['burger-constructor__amount-container']} pr-10`}>
+                <div className={`${burgerConstructorStyles['burger-constructor__amount']} pr-10`}>
                     <p className={`text text_type_digits-medium pr-2`}>{totalPrice}</p>
                     <CurrencyIcon />
                 </div>
@@ -96,7 +84,7 @@ const BurgerConstructor = () => {
                     Оформить заказ
                 </Button>
             </section>
-            {state.isOrderNeedsBeShown && (
+            {state.ModalIsVisible && (
                 <Modal onClose={closeOrderDetails}>
                     <OrderDetails orderId={ORDER_ID} />
                 </Modal>
