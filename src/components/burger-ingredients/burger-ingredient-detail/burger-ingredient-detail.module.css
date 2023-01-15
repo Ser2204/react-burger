@@ -1,0 +1,11 @@
+.burger-ingredient-detail__illustration {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.burger-ingredient-detail__nutrients {
+  margin: 0 auto;
+  text-align: center;
+}
