@@ -1,6 +1,0 @@
-.burger-ingredient-section__list {
-  list-style: none;
-  display: grid;
-  overflow-y: auto;
-  grid-template-columns: repeat(2, 1fr);
-}
