@@ -11,7 +11,7 @@ const OrderDetails = ({ orderId }) => {
             <p className={`${OrderDetailsStyles['order-details__id-title']} text text_type_main-default pb-15`}>
                 Идентификатор заказа
             </p>
-            <div className={`${OrderDetailsStyles['order-details__check-mark-container']}`}>
+            <div className={`${OrderDetailsStyles['order-details__check']}`}>
                 <CheckMarkIcon />
             </div>
             <p className={`text text_type_main-small pt-15 pb-2`}>Ваш заказ начали готовить</p>

@@ -1,20 +1,20 @@
 .burger-ingredient__card {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .burger-ingredient__name {
-    text-align: center;
+  text-align: center;
 }
 
 .burger-ingredient__item {
-    position: relative;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  position: relative;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.burger-ingredient__price-container {
-    display: flex;
-    flex-direction: row;
+.burger-ingredient__price {
+  display: flex;
+  flex-direction: row;
 }

@@ -7,12 +7,12 @@ const BurgerIngredientDetailes = (props) => {
         <div>
             <div className={`${burgerIngredientDetailStyles['burger-ingredient-detail__illustration']} pb-8`}>
                 <img
-                    className={`${burgerIngredientDetailStyles['burger-ingredient-detail__image']} pb-4`}
+                    className={`pb-4`}
                     src={image_large}
                     alt={`Изображение ингредиента ${name}`}                                   
                 ></img>
                 <h2
-                    className={`${burgerIngredientDetailStyles['burger-ingredient-detail__caption']} text text_type_main-medium`}
+                    className={`text text_type_main-medium`}
                 >
                     {name}
                 </h2>
