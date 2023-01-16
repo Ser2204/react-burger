@@ -19,7 +19,7 @@ const BurgerIngredients = () => {
                     Начинки
                 </Tab>
             </nav>
-            <ul className={`${burgerIngredientsStyles['burger-ingredients__section-list']}`}>
+            <ul className={`${burgerIngredientsStyles['burger-ingredients__types-list']}`}>
                 <BurgerIngredientSection type="bun" typeName="Булки" />
                 <BurgerIngredientSection type="sauce" typeName="Соусы" />
                 <BurgerIngredientSection type="main" typeName="Начинки" />
