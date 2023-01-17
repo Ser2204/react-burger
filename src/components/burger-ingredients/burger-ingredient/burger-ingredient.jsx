@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import IngredientType from '../../../utils/prop-types';
 import burgerIngredientStyles from './burger-ingredient.module.css';
 import { Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
@@ -35,13 +34,7 @@ const BurgerIngredient = (props) => {
     );
 };
 
-// BurgerIngredient.propTypes = {
-//     props: PropTypes.shape({
-//         image: PropTypes.string,
-//         name: PropTypes.string,
-//         price: PropTypes.number,
-//     }).isRequired,
-// };
+
 BurgerIngredient.propTypes = {
     props: IngredientType.isRequired,
   };
