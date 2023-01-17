@@ -16,7 +16,6 @@ const App = () => {
         hasError: false,
         isErrorModalOpen: false,
     });
-
     const closeErrModal = () => {
         setState({ ...state, isErrorModalOpen: false });
     };
