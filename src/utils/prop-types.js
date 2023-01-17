@@ -9,6 +9,7 @@ const IngredientType = shape({
   fat: PropTypes.number.isRequired,
   carbohydrates: PropTypes.number.isRequired,
   calories: PropTypes.number.isRequired,
+  price: PropTypes.number.isRequired,
 });
 
 export default IngredientType;
