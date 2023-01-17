@@ -23,4 +23,4 @@
 
 ### Демо
 
-[Демо на GitHub Pages](https://ser2204.github.io/react-burger/)
+[Демо на GitHub Pages](https://Ser2204.github.io/react-burger)
