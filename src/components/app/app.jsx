@@ -3,15 +3,12 @@ import AppHeader from '../app-header/app-header';
 import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
 import appStyles from './app.module.css';
- import { Context } from '../../context/context';
-import { config } from '../../utils/constants';
-import Api from '../api/api';
 import Modal from '../modal/modal';
 
-const api = new Api({ baseUrl: config.baseUrl, headers: config.headers });
+
 const App = () => {
     const [state, setState] = useState({
-        ingredients: [],
+        elements: [],
         isLoading: false,
         hasError: false,
         isErrorModalOpen: false,
@@ -23,20 +20,19 @@ const App = () => {
     useEffect(() => {
         setState({ ...state, hasError: false, isLoading: true });
         api.getIngredients()
-            .then((data) => setState({ ...state, ingredients: data.data, isLoading: false }))
+            .then((data) => setState({ ...state, elements: data.data, isLoading: false }))
             .catch((error) => {
                 console.log(error);
                 setState({ ...state, hasError: true, isLoading: false, isErrorModalOpen: true });
             });
     }, []);
 
-    const { ingredients, isLoading, hasError, isErrorModalOpen } = state;
+    const { elements, isLoading, hasError, isErrorModalOpen } = state;
 
     return (
-        <Context.Provider value={ingredients}>
-        {isLoading ? (
-           <span>Загружаем ингредиенты...</span>
-        ) : (
+        <React.Fragment value={elements}>
+        {isLoading ? ( <span>Загружаем ингредиенты...</span>) : 
+        (
             <div className={appStyles.app}>
                 <AppHeader />
                 {hasError && isErrorModalOpen ? (
@@ -53,7 +49,7 @@ const App = () => {
                 )}
             </div>
         )}
-    </Context.Provider>
+    </React.Fragment>
         
     );
 };
