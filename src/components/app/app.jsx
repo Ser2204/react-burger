@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import AppHeader from '../app-header/app-header';
 import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
 import appStyles from './app.module.css';
- import { Context } from '../../context/context';
-import { config } from '../../utils/constants';
-import Api from '../api/api';
+import { IgredientsContext } from '../../context/igredients-сontext';
+import {api} from '../api/index';
 import Modal from '../modal/modal';
 
-const api = new Api({ baseUrl: config.baseUrl, headers: config.headers });
+
+
 const App = () => {
     const [state, setState] = useState({
         ingredients: [],
@@ -33,7 +33,7 @@ const App = () => {
     const { ingredients, isLoading, hasError, isErrorModalOpen } = state;
 
     return (
-        <Context.Provider value={ingredients}>
+        <React.Fragment>
         {isLoading ? (
            <span>Загружаем ингредиенты...</span>
         ) : (
@@ -46,14 +46,17 @@ const App = () => {
                 ) : hasError ? (
                     <span>Что-то пошло не так..</span>
                     ) : (
-                    <main className={`${appStyles.body} pr-5 pl-5`}>
-                    <BurgerIngredients />
-                    <BurgerConstructor />
-                    </main>
+                        <IgredientsContext.Provider value={ingredients}>
+                           <main className={`${appStyles.body} pr-5 pl-5`}>
+                            <BurgerIngredients />
+                            <BurgerConstructor />
+                            </main>
+                        </IgredientsContext.Provider>
+                    
                 )}
             </div>
         )}
-    </Context.Provider>
+    </React.Fragment>
         
     );
 };
