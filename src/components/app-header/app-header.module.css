@@ -1,32 +1,32 @@
 .appHeader {
-  background-color: #1c1c21;
+    background-color: #1c1c21;
 }
 
 .appHeader__logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-height: 40px;
-  box-sizing: content-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 40px;
+    box-sizing: content-box;
 }
 
 .appHeader__menu {
-  max-width: 1280px;
-  margin: 0 auto;
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
 .appHeader__menu-items {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  grid-template-columns: repeat(2, max-content) 1fr max-content;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(2, max-content) 1fr max-content;
 }
 
 .appHeader__menu-item {
-  display: grid;
-  grid-template-columns: repeat(2, max-content);
-  cursor: pointer;
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    cursor: pointer;
 }
