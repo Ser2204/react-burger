@@ -32,7 +32,7 @@ const BurgerIngredient = (props) => {
             </figure>
         </li>
     );
-};
+}; 
 
 
 BurgerIngredient.propTypes = {

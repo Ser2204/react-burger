@@ -4,12 +4,12 @@
 
 Проектная работа по курсу [Веб-разработчик плюс](https://practicum.yandex.ru/profile/web-plus/) в [Яндекс.Практикуме](https://practicum.yandex.ru/).
 
-Сайт проекта "собери свой бургер"
+Сайт интернет-магазина. Пока доступна только главная страница.
 
 ### Функциональность
 
 * Статичная неадаптивная страница
-
+* `Grid Layout`
 
 ### Технологии
 
@@ -23,4 +23,4 @@
 
 ### Демо
 
-[Демо на GitHub Pages](https://Ser2204.github.io/react-burger)
+[Демо на GitHub Pages](https://elena-delikanova.github.io/react-burger)

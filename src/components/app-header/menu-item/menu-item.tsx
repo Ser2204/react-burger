@@ -1,8 +1,16 @@
 import PropTypes from 'prop-types';
 
-const MenuItem = (props) => {
-    const { className, text, icon, isActive } = props;
-
+const MenuItem = ({
+    className,
+    text,
+    icon,
+    isActive = false,
+}: {
+    className: string;
+    text: string;
+    isActive?: boolean;
+    icon: Function;
+}) => {
     const Icon = icon;
     return (
         <li className={className} role="button">
