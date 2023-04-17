@@ -1,0 +1,15 @@
+.burger-constructor-element {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.burger-constructor-element__element_dragged {
+    background-color: #4C4CFF;
+    opacity: 0.6;
+    box-shadow: 0 0 20px 4px #4C4CFF;
+}
+
+.burger-constructor-element__element_drag-over {
+    border: 2px solid #4C4CFF;
+}

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 
 const MenuItem = ({
     className,
@@ -18,13 +17,6 @@ const MenuItem = ({
             <span className={`text text_type_main-default ${!isActive ? 'text_color_inactive' : ''} pl-2`}>{text}</span>
         </li>
     );
-};
-
-MenuItem.propTypes = {
-    className: PropTypes.string,
-    text: PropTypes.string.isRequired,
-    isActive: PropTypes.bool,
-    icon: PropTypes.func.isRequired,
 };
 
 export default MenuItem;

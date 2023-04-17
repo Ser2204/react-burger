@@ -1,21 +1,41 @@
-import PropTypes from 'prop-types';
+import React from 'react';
+import { DragPreviewImage, useDrag } from 'react-dnd';
 import styles from './burger-ingredient.module.css';
 import { Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import { IngredientType } from '../../../utils/types';
+
+import { useAppSelector } from '../../../services/store';
+import { DND_TYPES } from '../../../utils/constants';
+import cs from 'classnames';
+
 
 const BurgerIngredient = ({
-    data,
+    element,
     onClick,
 }: {
-    data: element;
+    element: element;
     onClick: (event: React.MouseEvent, selectedIngredient: element) => void;
 }) => {
-    const { image, name, price } = data;
+    const addedElements: element[] = useAppSelector((state) => state.burger.addedElements);
+    const [{ isDragged }, dragRef, preview] = useDrag(() => ({
+        type: DND_TYPES.element,
+        item: element,
+        collect: (monitor) => ({
+            isDragged: monitor.isDragging(),
+        }),
+    }));
+    const { image, name, price, _id } = element;
+    const counterOfSuchIngredients = addedElements.filter((addedElement) => {
+        return addedElement._id === _id;
+    }).length;
     return (
-        <li
-            className={`${styles['burger-ingredient__card']}`}
-            onClick={(event) => onClick(event, data)}
+        <React.Fragment>
+            <li className={cs(styles['burger-ingredient__card'], {
+                    [styles['burger-ingredient__card_dragged']]: isDragged,
+                })}
+                ref={dragRef}
+                onClick={(event) => onClick(event, element)}
         >
+              <DragPreviewImage connect={preview} src={image} />
             <figure className={`${styles['burger-ingredient__item']}`}>
                 <img
                     alt={`Изображение ингредиента ${name}`}
@@ -35,14 +55,12 @@ const BurgerIngredient = ({
                 >
                     {name}
                 </figcaption>
-                <Counter count={1} />
+                {counterOfSuchIngredients && <Counter count={counterOfSuchIngredients} />}
             </figure>
         </li>
+        </React.Fragment>
+        
     );
-};
-
-BurgerIngredient.propTypes = {
-    data: PropTypes.shape(IngredientType).isRequired,
 };
 
 export default BurgerIngredient;
