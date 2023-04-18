@@ -1,0 +1,9 @@
+.total-price-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.total-price-container svg {
+    width: 36px;
+    height: 36px;
+}

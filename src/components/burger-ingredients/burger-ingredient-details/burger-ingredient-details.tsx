@@ -1,26 +1,26 @@
-import burgerIngredientDetailStyles from './burger-ingredient-detail.module.css';
-import IngredientType from '../../../utils/prop-types';
 
-const BurgerIngredientDetailes = (props) => {
-    const { name, image_large, calories, proteins, fat, carbohydrates} = props.ingredient;
+import styles from './burger-ingredient-details.module.css';
+
+const BurgerIngredientInfo = ({ element }: { element: element }) => {
+    const { name, image_large, proteins, fat, carbohydrates, calories } = element;
     return (
         <div>
-            <div className={`${burgerIngredientDetailStyles['burger-ingredient-detail__illustration']} pb-8`}>
+            <figure className={`${styles['burger-ingredient-details__illustration']} pb-8`}>
                 <img
-                    className={`pb-4`}
+                    alt={`Изображение ингредиента ${name}`}
                     src={image_large}
-                    alt={`Изображение ингредиента ${name}`}                                   
-                ></img>
-                <h2
-                    className={`text text_type_main-medium`}
+                    className={`${styles['burger-ingredient-details__image']} pb-4`}
+                />
+                <figcaption
+                    className={`${styles['burger-ingredient-details__caption']} text text_type_main-medium`}
                 >
                     {name}
-                </h2>
-            </div>
-            <table className={`${burgerIngredientDetailStyles['burger-ingredient-detail__nutrients']}`} cols="4">
+                </figcaption>
+            </figure>
+            <table className={`${styles['burger-ingredient-details__nutrients']}`}>
                 <thead className={`pb-2`}>
                     <tr>
-                        <th className={`text text_type_main-default pr-5`}>Калории, ккал</th>
+                        <th className={`text text_type_main-default pr-5`}>Калории,ккал</th>
                         <th className={`text text_type_main-default pr-5`}>Белки, г</th>
                         <th className={`text text_type_main-default pr-5`}>Жиры, г</th>
                         <th className={`text text_type_main-default`}>Углеводы, г</th>
@@ -39,8 +39,4 @@ const BurgerIngredientDetailes = (props) => {
     );
 };
 
-BurgerIngredientDetailes.propTypes = {
-    props: IngredientType.isRequired,
-  };
-
-export default BurgerIngredientDetailes;
+export default BurgerIngredientInfo;
